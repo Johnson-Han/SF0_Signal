@@ -6,7 +6,7 @@ var fs = require('fs');
 var pg = require('./pgconn');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.render('index2', { title: 'Express' });
 });
 
 module.exports = router;
