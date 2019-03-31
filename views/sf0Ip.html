@@ -352,13 +352,19 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">SF0 变量查询</h1>
-          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">SF0 IP地址分配</h1>
+          <p class="mb-4">说明：1.节点交换机通过双光纤和核心交换机相连，形成冗余双星网络
+            2.EPICS网段： 192.168.10.XXX
+            3.DPU网段： 222.222.221.xxx   222.222.222.xxx
+            4.DPU EPICS IOC地址 192.168.10.3:9001 192.168.10.3:9002 192.168.10.3:9003 192.168.10.3:9004 192.168.10.3:9005 192.168.10.3:9006 192.168.10.3:9007 
+            5.堆芯加热器 EPICS IOC地址 192.168.10.76:9060 192.168.10.76:9061 192.168.10.76:9062 
+            6.高精度热电偶 EPICS IOC地址 192.168.10.76:9001 192.168.10.76:9002 192.168.10.76:9003 192.168.10.76:9004
+          </a>.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">SF0 变量列表检索</h6>
+              <h6 class="m-0 font-weight-bold text-primary">SF0 IP地址分配</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -443,7 +449,7 @@
     app.controller('myCtrl',function($scope,$http){
 
     $('#table').bootstrapTable({
-    url: 'sf0List.json',
+    url: 'sf0IpConfig.json',
     method:'GET',
     contentType: "application/x-www-form-urlencoded",
     striped:true,
@@ -467,14 +473,30 @@
         field: 'index',
         title: '序号'
     }, {
-        field: 'pointName',
-        title: '信号名称',
+        field: 'deviceCode',
+        title: '节点设备码',
         sortable:true
     }, {
-        field: 'pointDesp',
-        title: '信号描述',
+        field: 'nodeName',
+        title: '节点名称',
         sortable:true
-    }, ]
+    }, {
+        field: 'nodePosition',
+        title: '节点位置',
+        sortable:true
+    },{
+        field: 'ipConfigure',
+        title: 'IP地址分配',
+        sortable:true
+    },{
+        field: 'protocol',
+        title: '通讯协议',
+        sortable:true
+    },{
+        field: 'contacts',
+        title: '设备联系人',
+        sortable:true
+    },]
 }); })
     </script>
 

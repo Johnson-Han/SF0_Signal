@@ -18,3 +18,16 @@ router.get('/sf0List.json', function(req, res, next) {
 });
 
 })
+
+router.get('/sf0Ip', function(req, res, next) {
+  res.render('sf0Ip', { title: 'Express' });
+});
+router.get('/sf0IpConfig.json', function(req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql ="select * from sf0_ip order by index ";
+  pg.query(sql, function (result) {
+  res.jsonp(result.rows);
+});
+
+})
+
