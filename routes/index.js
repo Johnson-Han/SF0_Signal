@@ -31,3 +31,14 @@ router.get('/sf0IpConfig.json', function(req, res, next) {
 
 })
 
+router.get('/sf0Terminal', function(req, res, next) {
+  res.render('sf0Terminal', { title: 'Express' });
+});
+router.get('/sf0TerminalConfig.json', function(req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql ="select * from sf0_terminal order by index ";
+  pg.query(sql, function (result) {
+  res.jsonp(result.rows);
+});
+
+})

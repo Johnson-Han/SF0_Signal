@@ -180,24 +180,19 @@
             <hr>
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">SF0 IP地址分配</h1>
-          <p class="mb-4">说明：<br>1.节点交换机通过双光纤和核心交换机相连，形成冗余双星网络<br>
-            2.EPICS网段： 192.168.10.XXX<br>
-            3.DPU网段： 222.222.221.xxx   222.222.222.xxx<br>
-            4.DPU EPICS IOC地址 192.168.10.3:9001 192.168.10.3:9002 192.168.10.3:9003 192.168.10.3:9004 192.168.10.3:9005 192.168.10.3:9006 192.168.10.3:9007 <br>
-            5.堆芯加热器 EPICS IOC地址 192.168.10.76:9060 192.168.10.76:9061 192.168.10.76:9062 <br>
-            6.高精度热电偶 EPICS IOC地址 192.168.10.76:9001 192.168.10.76:9002 192.168.10.76:9003 192.168.10.76:9004
-          </a>.</p>
+          <h1 class="h3 mb-2 text-gray-800">SF0 信号端子分配</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">SF0 IP地址分配</h6>
+              <h6 class="m-0 font-weight-bold text-primary">SF0 信号端子分配</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
+                <div style="overflow: scroll;">
                 <!-- <table class="table table-bordered" id="table" width="100%" cellspacing="0"> -->
-               <table id='table'> </table>
+               <table id='table' style="min-width:1500px"> </table>
+              </div>
               </div>
             </div>
           </div>
@@ -277,7 +272,7 @@
     app.controller('myCtrl',function($scope,$http){
 
     $('#table').bootstrapTable({
-    url: 'sf0IpConfig.json',
+    url: 'sf0TerminalConfig.json',
     method:'GET',
     contentType: "application/x-www-form-urlencoded",
     striped:true,
@@ -297,32 +292,59 @@
     paginationPreText:"上一页",
     paginationNextText:"下一页", 
     // showRefresh:true,//刷新按钮
+              
     columns: [{
-        field: 'index',
-        title: '序号'
-    }, {
-        field: 'deviceCode',
-        title: '节点设备码',
+        field: 'cabinetCode',
+        title: 'DCS机柜码',
         sortable:true
     }, {
-        field: 'nodeName',
-        title: '节点名称',
+        field: 'boardName',
+        title: '板卡名称',
         sortable:true
     }, {
-        field: 'nodePosition',
-        title: '节点位置',
+        field: 'channelName',
+        title: '通道号',
         sortable:true
     },{
-        field: 'ipConfigure',
-        title: 'IP地址分配',
+        field: 'boardPos',
+        title: '板卡位置',
         sortable:true
     },{
-        field: 'protocol',
-        title: '通讯协议',
+        field: 'terminalNo',
+        title: '端子号',
         sortable:true
     },{
-        field: 'contacts',
-        title: '设备联系人',
+        field: 'signalLine',
+        title: '信号线名',
+        sortable:true
+    },
+    {
+        field: 'color',
+        title: '颜色',
+        sortable:true
+    },{
+        field: 'cableCode',
+        title: '电缆编码',
+        sortable:true
+    },{
+        field: 'cableSpec',
+        title: '线缆规格',
+        sortable:true
+    },{
+        field: 'sourceBoard',
+        title: '信号来源机柜',
+        sortable:true
+    },{
+        field: 'terminal',
+        title: '端子',
+        sortable:true
+    },{
+        field: 'signalDsp',
+        title: '信号描述',
+        sortable:true
+    },{
+        field: 'detail',
+        title: '详细信息',
         sortable:true
     },]
 }); })
