@@ -187,13 +187,13 @@
         <div class="container-fluid">
           <hr>
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">SF0 变量查询</h1>
+          <h1 class="h3 mb-2 text-gray-800">SF0 设备信息查询</h1>
           <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">SF0 变量列表检索</h6>
+              <h6 class="m-0 font-weight-bold text-primary">SF0 设备列表检索</h6>
             </div>
             <div class="card-body">
               
@@ -278,7 +278,7 @@
     app.controller('myCtrl',function($scope,$http){
 
     $('#table').bootstrapTable({
-    url: 'sf0List.json',
+    url: 'deviceList.json',
     method:'GET',
     contentType: "application/x-www-form-urlencoded",
     striped:true,
@@ -302,25 +302,34 @@
         field: 'index',
         title: '序号'
     }, {
-        field: 'pointName',
-        title: '信号名称',
+        field: 'deviceName',
+        title: '设备名称',
         sortable:true
     }, {
-        field: 'pointDesp',
-        title: '信号描述',
+        field: 'type',
+        title: '结构形式',
         sortable:true
     }, {
-        field: 'pointName',
-        title: '图形',
-        // sortable:true
-        formatter:function(value,row,index){
-          console.log(value);
-          // return '<a href="' + row[3] + '">' <img src="/img/chart.png" width="30" > '</a>';
-          // return '<a href=`${row[1]}`><img src="/img/chart.png" width="30"></a>'
-          return '<a href=" http://192.168.10.6:17668/retrieval/ui/viewer/archViewer.html?pv=' + row.pointName + '">' + '<img src="/img/chart.png" width="30">' + '</a>';
-        },
-      
-    }]
+        field: 'designTemp',
+        title: '设计温度',
+        sortable:true      
+    },{
+        field: 'designPress',
+        title: '设计压力',
+        sortable:true
+    }, {
+        field: 'otherParams',
+        title: '其他参数',
+        sortable:true
+    }, {
+        field: 'date',
+        title: '日期',
+        sortable:true
+    }, {
+        field: 'unit',
+        title: '研发单位',
+        sortable:true
+    }, ]
 }); })
     </script>
 

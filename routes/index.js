@@ -42,3 +42,15 @@ router.get('/sf0TerminalConfig.json', function(req, res, next) {
 });
 
 })
+
+router.get('/sf0Device', function(req, res, next) {
+  res.render('sf0Device', { title: 'Express' });
+});
+router.get('/deviceList.json', function(req, res, next) {
+  process.env.TZ = "Asia/Shanghai";
+  sql ="select * from sf0_device order by index ";
+  pg.query(sql, function (result) {
+  res.jsonp(result.rows);
+});
+
+})
