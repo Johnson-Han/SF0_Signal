@@ -317,7 +317,21 @@
           console.log(value);
           // return '<a href="' + row[3] + '">' <img src="/img/chart.png" width="30" > '</a>';
           // return '<a href=`${row[1]}`><img src="/img/chart.png" width="30"></a>'
-          return '<a href=" http://192.168.10.6:17668/retrieval/ui/viewer/archViewer.html?pv=' + row.pointName + '">' + '<img src="/img/chart.png" width="30">' + '</a>';
+          return '<a href=" http://192.168.10.6:17668/retrieval/ui/viewer/archViewer.html?pv=' +value+ '">' + '<img src="/img/chart.png" width="30">' + '</a>';
+        },
+      
+    },{
+        field: 'pointName',
+        title: "统计",
+        // sortable:true
+        formatter:function(value,row,index){
+          // return '<a href="' + row[3] + '">' <img src="/img/chart.png" width="30" > '</a>';
+          // return '<a href=`${row[1]}`><img src="/img/chart.png" width="30"></a>'
+          return '<span>'+
+            '<a href=" http://192.168.10.6:17668/retrieval/data/getData.json?pv=mean' +'('+value+ ')'+'">' + '<button>均值</button>' + '</a>'+
+            '<a href=" http://192.168.10.6:17668/retrieval/data/getData.json?pv=max' +'('+value+ ')'+'">' + '<button>最大值</button>' + '</a>'+
+            '<a href=" http://192.168.10.6:17668/retrieval/data/getData.json?pv=min' +'('+value + ')'+'">' + '<button>最小值</button>' + '</a>'
+           + '</span>';
         },
       
     }]
