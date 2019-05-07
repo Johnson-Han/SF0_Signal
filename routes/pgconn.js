@@ -3,7 +3,7 @@ var client = new pg.Client();
 var config = {
   user: 'postgres', //env var: PGUSER
   database: 'zhangliyuan', //env var: PGDATABASE
-  // password: '123456', //env var: PGPASSWORD
+  password: '123456', //env var: PGPASSWORD
 	host: '127.0.0.1', // Server hosting the postgres database
 	// host: '192.168.10.9',
   port: 5432, //env var: PGPORT

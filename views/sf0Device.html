@@ -276,6 +276,19 @@
   <script>
     var app = angular.module('myApp', ['ngRoute']);
     app.controller('myCtrl',function($scope,$http){
+      function changeDateFormat(cellval) {
+            if (cellval != null) {
+              var date = cellval.split('-');
+              var index = date.toString().IndexOf("T");
+              console.log(index)
+              // var uniformDate = index.substring(0,index);
+                // var date = new Date(parseInt(cellval.replace("/Date(", "").replace(")/", ""), 10));
+                // var month = date.getMonth() + 1 < 10 ? "0" + (date.getMonth() + 1) : date.getMonth() + 1;
+                // var currentDate = date.getDate() < 10 ? "0" + date.getDate() : date.getDate();
+                // return date.getFullYear() + "-" + month + "-" + currentDate;
+                return date
+            }
+        }
 
     $('#table').bootstrapTable({
     url: 'deviceList.json',
@@ -324,7 +337,11 @@
     }, {
         field: 'date',
         title: '日期',
-        sortable:true
+        sortable:true,
+        // formatter: function (value, row, index) {
+        //             return changeDateFormat(value)
+        //         }
+
     }, {
         field: 'unit',
         title: '研发单位',
